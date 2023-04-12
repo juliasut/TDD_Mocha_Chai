@@ -2,15 +2,11 @@
 
 export const getLetterCount = (str) => {
   const letters = str.split('');
-  let letterCount = {};
 
-  letters.forEach((letter) => {
-    if (!letterCount[letter]) {
-      letterCount[letter] = 1;
-    } else {
-      letterCount[letter] += 1;
-    }
-  });
+  const letterCount = letters.reduce((acc, curr) => {
+    acc[curr] ? (acc[curr] += 1) : (acc[curr] = 1);
+    return acc;
+  }, {});
 
   return letterCount;
 };
