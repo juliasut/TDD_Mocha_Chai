@@ -1,6 +1,9 @@
-export const isAnagram = (str1, str2) => {
-  const str1Letters = str1.split('');
-  const str2Letters = str2.split('');
+import { isEqual } from 'lodash';
+import { getLetterCount } from './letter-count';
 
-  return str1Letters.every((letter) => str2Letters.includes(letter));
+export const isAnagram = (str1, str2) => {
+  const str1LetterCount = getLetterCount(str1);
+  const str2LetterCount = getLetterCount(str2);
+
+  return isEqual(str1LetterCount, str2LetterCount);
 };
